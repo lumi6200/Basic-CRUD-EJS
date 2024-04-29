@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 shadow-sm p-4 rounded">
+            <h2>Update Post</h2>
+            <% if (title && content) { %>
+                <form action="/update/<%= i %>" method="post">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" id="title" value="<%= title %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea class="form-control" name="content" id="content"
+                            rows="5"><%= content %></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-end">Update Post</button>
+                </form>
+                <form action="/delete/<%= i %>" method="POST" class="ms-2">
+                    <button type="submit" class="btn btn-danger">Delete Post</button>
+                </form>
+                <% } else { %>
+                    <p>Post not found.</p>
+                    <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
